@@ -25,7 +25,7 @@ python3 JBLogParser.py --help
 * `-T`/`--time`: Time Range (e.g MM/DD/YYYY-MM/DD/YYYY)
 
 ```bash
-┌──(root㉿kal')-[~]
+┌──(root㉿kali)-[~]
 └─$ python3 JBLogParser.py --help
 
 
@@ -48,4 +48,33 @@ Options:
                         Log file or Log files
   -t TYPE, --type=TYPE  Select to type (e.g. USER_CMD, USER_START)
   -T TIME, --time=TIME  Time Range (e.g MM/DD/YYYY-MM/DD/YYYY)
+```
+
+## Example
+
+````bash
+
+┌──(root㉿kali)-[~]
+└─$ python3 JBLogParser.py -l audit -f /var/log/audit/audit.log -t USER_CMD
+
+Time                    UID             Command         Path
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+2021-08-19 09:48:22     <username>        systemctl enable auditd.service
+2021-08-19 09:48:22     <username>        ls /var/log/
+2021-08-19 09:48:22     <username>        ls /var/log/audit
+2021-08-19 09:48:22     <username>        cp /var/log/audit/audit.log .
+2021-08-19 09:48:22     <username>        chown <username> audit.log
+2021-08-19 09:48:22     <username>        python3 JBLogParser.py -l audit -f logFiles/audit.log -t USER_CMD
+
+--
+
+┌──(root㉿kali)-[~]
+└─$ python3 JBLogParser.py -l audit -f /var/log/audit/audit.log -t USER_CMD
+
+Time                    UID             Command         Path
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+2021-08-17      kali CRON[1582]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2021-08-17      kali CRON[1582]: pam_unix(cron:session): session closed for user root
+2021-08-17      kali CRON[1778]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2021-08-17      kali CRON[1778]: pam_unix(cron:session): session closed for user root
 ```
