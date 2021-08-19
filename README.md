@@ -69,7 +69,7 @@ Time                    UID             Command         Path
 --
 
 ┌──(root㉿kali)-[~]
-└─$ python3 JBLogParser.py -l audit -f /var/log/audit/audit.log -t USER_CMD
+└─$ python3 JBLogParser.py -l auth -f /var/log/auth.log -t cron
 
 Time                    UID             Command         Path
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
